@@ -10,3 +10,5 @@ Downloaded 2026-10-25 from the repository's master branch. These are brand marks
 # Layout control assets
 
 `menu.svg` and `band-curve.svg` reproduce the paths actually rendered by https://vipcz.vip/ on 2026-10-25. The three product logos above remain independent Lobe Icons SVG assets; the reference site's dark raster icon tiles are not used.
+
+- codex.svg: packages/static-svg/icons/codex.svg — original monochrome Codex mark, downloaded 2026-10-25; MIT license as above.
