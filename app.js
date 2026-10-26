@@ -10,8 +10,8 @@ function message(t){$('#message').textContent=t;$('#message').className='error';
 function bind(id,event,fn){$(id)?.addEventListener(event,async e=>{try{message('');await fn(e)}catch(err){message(err.message)}})}
 function show(html,title,view='flow'){clearTimeout(poller);document.body.dataset.view=view;$('#workspace').innerHTML=html;$('#page-title').textContent=title;document.title=title+' · AI 卡台';message('')}
 function reset(){rawSession='';account=null;card='';idempotency=crypto.randomUUID()}
-const displayTitle=p=>p.title.replace(/\s*·\s*续费$/,'');
-const period=p=>p.category==='codex'?'额度充值':p.tier.includes('续费')?'续费':p.tier.includes('iOS')?'iOS 月卡':'月卡';
+const displayTitle=p=>p.title.replace(/\s*·\s*(?:续费|iOS|智利|菲律宾)$/,'');
+const period=p=>p.category==='codex'?'额度充值':p.tier.includes('续费')?'续费':p.tier.includes('iOS')?'iOS 月卡':p.tier.includes('智利')?'智利月卡':p.tier.includes('菲律宾')?'菲律宾月卡':'月卡';
 const productPrice=p=>`<div class="card-price"><strong>${p.price===null?'—':'¥'+money(p.price)}</strong>${p.price===null||p.category==='codex'?'':'<span>/月</span>'}</div>`;
 function productCard(p){return `<article class="product-card"><h2>${esc(displayTitle(p))}</h2><p class="product-period">${period(p)}</p><div class="card-art">${brandIcon(p.category,64)}</div>${productPrice(p)}<a class="purchase-link" href="#product/${encodeURIComponent(p.id)}" aria-label="购买 ${esc(p.title)}">立即购买</a></article>`}
 function buy(){
